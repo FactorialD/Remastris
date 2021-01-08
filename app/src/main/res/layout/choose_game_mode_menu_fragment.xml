@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
+    tools:context=".Views.ui.choosegamemodemenu.ChooseGameModeMenu">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="411dp"
+        android:layout_height="48dp"
+        android:background="@android:color/holo_green_dark"
+        android:gravity="center"
+        android:text="@string/choose_game_mode"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/start_classic_mode_button"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="#ffa726"
+        android:text="@string/classic_mode"
+        android:textColor="?android:attr/textColorPrimaryNoDisable"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_random_mode_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/start_random_mode_button"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="#ff7043"
+        android:text="@string/random_mode"
+        android:textColor="?android:attr/textColorPrimaryNoDisable"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_custom_mode_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_classic_mode_button" />
+
+    <Button
+        android:id="@+id/back_button2"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="#AB47BC"
+        android:text="@string/back"
+        android:textColor="?android:attr/textColorPrimaryNoDisable"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_custom_mode_button" />
+
+    <Button
+        android:id="@+id/start_custom_mode_button"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="#EF5350"
+        android:text="@string/custom_mode"
+        android:textColor="?android:attr/textColorPrimaryNoDisable"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/back_button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_random_mode_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

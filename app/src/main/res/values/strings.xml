@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Remastris</string>
+    <string name="start_game">START GAME</string>
+    <string name="open_shop">SHOP</string>
+    <string name="scorebaord">SCOREBOARD</string>
+    <string name="settings">SETTINGS</string>
+    <string name="about">ABOUT</string>
+    <string name="exit">EXIT</string>
+    <string name="start_new_game">START NEW GAME</string>
+    <string name="continue_game">CONTINUE GAME</string>
+    <string name="back">BACK</string>
+    <string name="choose_game_mode">CHOOSE GAME MODE</string>
+    <string name="classic_mode">CLASSIC MODE</string>
+    <string name="random_mode">RANDOM MODE</string>
+    <string name="custom_mode">CUSTOM MODE</string>
+    <string name="about_text" > Made by Dmytro Salahor \n
+        factoriald@gmail.com
+    </string>
+    <string name="result_board">RESULTBOARD</string>
+    <string name="to_main_menu">TO MAIN MENU</string>
+    <string name="continue_string">CONTINUE</string>
+    <string name="saved_games">SAVED GAMES</string>
+    <string name="p">P</string>
+    <string name="right_arrow"><![CDATA[<-]]></string>
+</resources>
