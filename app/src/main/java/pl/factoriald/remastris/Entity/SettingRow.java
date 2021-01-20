@@ -6,4 +6,6 @@ public class SettingRow {
     private String name;
     private String value;
 
+
+
 }

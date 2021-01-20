@@ -2,6 +2,7 @@ package pl.factoriald.remastris.Entity.Figures;
 
 import pl.factoriald.remastris.Entity.Cell;
 import pl.factoriald.remastris.Entity.CellState;
+import pl.factoriald.remastris.Entity.Direction;
 import pl.factoriald.remastris.Entity.GameField;
 import pl.factoriald.remastris.Entity.Gravity;
 
@@ -18,12 +19,12 @@ public class Figure2_2 extends Figure {
         super();
     }
 
-    public static Figure2_2 figure2_2_cube(GameField gf, int x, int y){
+    public static Figure2_2 figure2_2_cube(GameField gf, int x, int y, Direction direction){
 
          Figure2_2 f = new Figure2_2();
          f.setType(ElementType._2_2_CUBE);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[2][2];
@@ -43,17 +44,17 @@ public class Figure2_2 extends Figure {
          f.cells[1][0] = gf.getCells()[x +1][y];
          f.cells[0][1] = gf.getCells()[x][y +1];
          f.cells[1][1] = gf.getCells()[x +1][y +1];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
          return f;
     }
 
-    public static Figure2_2 figure2_2_littleR(GameField gf, int x, int y){
+    public static Figure2_2 figure2_2_littleR(GameField gf, int x, int y, Direction direction){
 
 
         Figure2_2 f = new Figure2_2();
         f.setType(ElementType._2_2_LITTLE_R);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[2][2];
@@ -73,16 +74,16 @@ public class Figure2_2 extends Figure {
         f.cells[1][0] = gf.getCells()[x +1][y];
         f.cells[0][1] = gf.getCells()[x][y +1];
         f.cells[1][1] = gf.getCells()[x +1][y +1];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 
-    public static Figure2_2 figure2_2_littleR_CW(GameField gf, int x, int y){
+    public static Figure2_2 figure2_2_littleR_CW(GameField gf, int x, int y, Direction direction){
 
         Figure2_2 f = new Figure2_2();
         f.setType(ElementType._2_2_LITTLE_R_CW);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[2][2];
@@ -102,16 +103,16 @@ public class Figure2_2 extends Figure {
         f.cells[1][0] = gf.getCells()[x +1][y];
         f.cells[0][1] = gf.getCells()[x][y +1];
         f.cells[1][1] = gf.getCells()[x +1][y +1];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 
-    public static Figure2_2 figure2_2_littleR_CCW(GameField gf, int x, int y){
+    public static Figure2_2 figure2_2_littleR_CCW(GameField gf, int x, int y, Direction direction){
 
         Figure2_2 f = new Figure2_2();
         f.setType(ElementType._2_2_LITTLE_R_CCW);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[2][2];
@@ -131,16 +132,16 @@ public class Figure2_2 extends Figure {
         f.cells[1][0] = gf.getCells()[x +1][y];
         f.cells[0][1] = gf.getCells()[x][y +1];
         f.cells[1][1] = gf.getCells()[x +1][y +1];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 
-    public static Figure2_2 figure2_2_littleR_CCCW(GameField gf, int x, int y){
+    public static Figure2_2 figure2_2_littleR_CCCW(GameField gf, int x, int y, Direction direction){
 
         Figure2_2 f = new Figure2_2();
         f.setType(ElementType._2_2_LITTLE_R_CCCW);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[2][2];
@@ -160,7 +161,7 @@ public class Figure2_2 extends Figure {
         f.cells[1][0] = gf.getCells()[x +1][y];
         f.cells[0][1] = gf.getCells()[x][y +1];
         f.cells[1][1] = gf.getCells()[x +1][y +1];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 }

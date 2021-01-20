@@ -2,6 +2,7 @@ package pl.factoriald.remastris.Entity.Figures;
 
 import pl.factoriald.remastris.Entity.Cell;
 import pl.factoriald.remastris.Entity.CellState;
+import pl.factoriald.remastris.Entity.Direction;
 import pl.factoriald.remastris.Entity.GameField;
 
 public class Figure3_3 extends Figure  {
@@ -10,12 +11,12 @@ public class Figure3_3 extends Figure  {
 
     }
 
-    public static Figure3_3 figure3_3_L(GameField gf, int x, int y){
+    public static Figure3_3 figure3_3_L(GameField gf, int x, int y, Direction direction){
 
         Figure3_3 f = new Figure3_3();
         f.setType(ElementType._3_3_L);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[3][3];
@@ -59,16 +60,16 @@ public class Figure3_3 extends Figure  {
         f.cells[0][2] = gf.getCells()[x][y +2]    ;
         f.cells[1][2] = gf.getCells()[x +1][y +2] ;
         f.cells[2][2] = gf.getCells()[x + 2][y +2];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 
-    public static Figure3_3 figure3_3_L_CW(GameField gf, int x, int y){
+    public static Figure3_3 figure3_3_L_CW(GameField gf, int x, int y, Direction direction){
 
         Figure3_3 f = new Figure3_3();
         f.setType(ElementType._3_3_L_CW);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[3][3];
@@ -91,15 +92,6 @@ public class Figure3_3 extends Figure  {
         gf.getCells()[x][y +2]      .setState(CellState.EMPTY);
         gf.getCells()[x +1][y +2]   .setState(CellState.EMPTY);
         gf.getCells()[x + 2][y +2]  .setState(CellState.EMPTY);
-//        gf.getCells()[x][y]         .setState(gf.getCells()[x][y].getFigure() == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y]      .setState(gf.getCells()[x +1][y]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +2][y]      .setState(gf.getCells()[x +2][y]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x][y +1]      .setState(gf.getCells()[x][y +1]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y +1]   .setState(gf.getCells()[x +1][y +1]  == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x + 2][y +1]  .setState(gf.getCells()[x + 2][y +1] == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x][y +2]      .setState(gf.getCells()[x][y +2]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y +2]   .setState(gf.getCells()[x +1][y +2]  == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x + 2][y +2]  .setState(gf.getCells()[x + 2][y +2] == null?CellState.EMPTY:CellState.BLOCK);
 
         gf.getCells()[x][y]         .setColor(f.getColor());
         gf.getCells()[x +1][y]      .setColor(f.getColor());
@@ -120,16 +112,16 @@ public class Figure3_3 extends Figure  {
         f.cells[0][2] = gf.getCells()[x][y +2]    ;
         f.cells[1][2] = gf.getCells()[x +1][y +2] ;
         f.cells[2][2] = gf.getCells()[x + 2][y +2];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 
-    public static Figure3_3 figure3_3_L_CCW(GameField gf, int x, int y){
+    public static Figure3_3 figure3_3_L_CCW(GameField gf, int x, int y, Direction direction){
 
         Figure3_3 f = new Figure3_3();
         f.setType(ElementType._3_3_L_CCW);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[3][3];
@@ -153,16 +145,6 @@ public class Figure3_3 extends Figure  {
         gf.getCells()[x +1][y +2]   .setState(CellState.BLOCK);
         gf.getCells()[x + 2][y +2]  .setState(CellState.EMPTY);
 
-//        gf.getCells()[x][y]         .setState(gf.getCells()[x][y].getFigure() == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y]      .setState(gf.getCells()[x +1][y]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +2][y]      .setState(gf.getCells()[x +2][y]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x][y +1]      .setState(gf.getCells()[x][y +1]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y +1]   .setState(gf.getCells()[x +1][y +1]  == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x + 2][y +1]  .setState(gf.getCells()[x + 2][y +1] == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x][y +2]      .setState(gf.getCells()[x][y +2]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y +2]   .setState(gf.getCells()[x +1][y +2]  == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x + 2][y +2]  .setState(gf.getCells()[x + 2][y +2] == null?CellState.EMPTY:CellState.BLOCK);
-
         gf.getCells()[x][y]         .setColor(f.getColor());
         gf.getCells()[x +1][y]      .setColor(f.getColor());
         gf.getCells()[x +2][y]      .setColor(f.getColor());
@@ -182,16 +164,16 @@ public class Figure3_3 extends Figure  {
         f.cells[0][2] = gf.getCells()[x][y +2]    ;
         f.cells[1][2] = gf.getCells()[x +1][y +2] ;
         f.cells[2][2] = gf.getCells()[x + 2][y +2];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 
-    public static Figure3_3 figure3_3_L_CCCW(GameField gf, int x, int y){
+    public static Figure3_3 figure3_3_L_CCCW(GameField gf, int x, int y, Direction direction){
 
         Figure3_3 f = new Figure3_3();
         f.setType(ElementType._3_3_L_CCCW);
-        if(gf.getFigure() != null){
-            int oldColor = gf.getFigure().getColor();
+        if(gf.getFigures().get(direction) != null){
+            int oldColor = gf.getFigures().get(direction).getColor();
             f.setColor(oldColor);
         }
         f.cells = new Cell[3][3];
@@ -215,16 +197,6 @@ public class Figure3_3 extends Figure  {
         gf.getCells()[x +1][y +2]   .setState(CellState.EMPTY);
         gf.getCells()[x + 2][y +2]  .setState(CellState.BLOCK);
 
-//        gf.getCells()[x][y]         .setState(gf.getCells()[x][y].getFigure() == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y]      .setState(gf.getCells()[x +1][y]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +2][y]      .setState(gf.getCells()[x +2][y]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x][y +1]      .setState(gf.getCells()[x][y +1]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y +1]   .setState(gf.getCells()[x +1][y +1]  == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x + 2][y +1]  .setState(gf.getCells()[x + 2][y +1] == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x][y +2]      .setState(gf.getCells()[x][y +2]     == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x +1][y +2]   .setState(gf.getCells()[x +1][y +2]  == null?CellState.EMPTY:CellState.BLOCK);
-//        gf.getCells()[x + 2][y +2]  .setState(gf.getCells()[x + 2][y +2] == null?CellState.EMPTY:CellState.BLOCK);
-
         gf.getCells()[x][y]         .setColor(f.getColor());
         gf.getCells()[x +1][y]      .setColor(f.getColor());
         gf.getCells()[x +2][y]      .setColor(f.getColor());
@@ -244,7 +216,7 @@ public class Figure3_3 extends Figure  {
         f.cells[0][2] = gf.getCells()[x][y +2]    ;
         f.cells[1][2] = gf.getCells()[x +1][y +2] ;
         f.cells[2][2] = gf.getCells()[x + 2][y +2];
-        gf.setFigure(f);
+        gf.setFigureByIndex(f, direction);
         return f;
     }
 }

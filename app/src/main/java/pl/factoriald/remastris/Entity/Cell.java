@@ -46,4 +46,6 @@ public class Cell {
         this.figure = cell.figure;
     }
 
+
+
 }

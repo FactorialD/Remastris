@@ -1,70 +1,162 @@
 package pl.factoriald.remastris.Entity;
 
+import android.util.Log;
+
+import lombok.Getter;
+
 public class Ticker{
 
-    Tickable gameField;
+    private static Ticker instance;
+
+
+    Tickable tickable;
 
     Thread thread;
-    int delay;
+    @Getter
+    int delay = 1000;
 
-    private Object mPauseLock;
-    private boolean mPaused;
-    private boolean mFinished;
+    private volatile boolean paused = false;
+    private final SingletonLock lock = SingletonLock.getInstance();
 
-    public Ticker(Tickable gameField,int delay) {
-        this.gameField = gameField;
-        mPauseLock = new Object();
-        mPaused = false;
-        mFinished = false;
+    //private final Object mPauseLock;
+    //private boolean mPaused;
+    //private boolean mFinished;
 
+    public static Ticker getInstance(int delay){
+        Log.d("TICKER", "create ticker with delay" + delay);
+        if (instance == null) {
+            instance = new Ticker(delay);
+        }else{
+            instance.delay = delay;
+        }
+
+        return instance;
+
+    }
+
+    public static Ticker getInstanceUnchecked(){
+
+        return instance;
+
+    }
+
+    public static Ticker getNewInstance(int delay){
+        Log.d("TICKER", "recreate ticker with delay" + delay);
+        instance = new Ticker(delay);
+
+        return instance;
+
+    }
+
+    public Ticker(int delay) {
+
+        this.tickable = null;
+//        mPauseLock = new Object();
+//        mPaused = false;
+//        mFinished = false;
+        this.delay = delay;
+        Log.d("LOKKKK" , "New instance of lock created. Delay is " + this.delay);
         this.thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!mFinished) {
-                    // Do stuff.
+                for (;;) {
+                    synchronized (lock) {
+                        while (paused) {
+                            //Log.d("LOCK_WAIT", lock.toString());
+                            try {
+                                lock.wait();
+                            } catch (InterruptedException e) {}
+                        }
+                    }
+
+                    tickable.doTick();
                     try {
+                        //Log.d("DELAY", delay +"");
                         Thread.sleep(delay);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    gameField.doTick();
-                    synchronized (mPauseLock) {
-                        while (mPaused) {
-                            try {
-                                mPauseLock.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
                 }
+//                while (!mFinished) {
+//                    // Do stuff.
+//
+//
+//                        while (mPaused) {
+//                            Log.d("TICKER", "Ticker paused");
+//                            synchronized (mPauseLock) {
+//                            try {
+//                                mPauseLock.wait();
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
+//                            }
+//                        }
+//                    Log.d("TICKER", "Ticker unpaused");
+//                    tickable.doTick();
+//                    try {
+//                        Thread.sleep(delay);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+                //Log.d("TICKER", "Ticker finished");
             }
         });
 
-        this.delay = delay;
+
+    }
+
+    public void addTickable(Tickable t){
+        this.tickable = t;
+
     }
 
     public void start(){
-        thread.start();
+        if(!thread.isAlive()){
+            thread.start();
+        }
+        setPaused(false);
+
 
     }
 
     public void pause(){
-        synchronized (mPauseLock) {
-            mPaused = true;
-        }
+//        synchronized (mPauseLock) {
+//            mPaused = true;
+//        }
+        setPaused(true);
     }
 
     public void unpause(){
-        synchronized (mPauseLock) {
-            mPaused = false;
+//        mPaused = false;
+//        synchronized (mPauseLock) {
+//            mPauseLock.notify();
+//        }
+             Log.d("TICKER", "UNPAUSE");
+        setPaused(false);
+
+    }
+
+//    public void finish(){
+//        synchronized (mPauseLock) {
+//            mFinished = true;
+//        }
+//    }
+
+    void setPaused(boolean shouldPause) {
+        synchronized (lock) {
+            Log.d("LOCK_SWITCH", lock.toString());
+            paused = shouldPause;
+            if (!paused) {
+                lock.notify();
+            }
+            Log.d("LOCK_SWITCH", "Paused: " + paused);
         }
     }
 
-    public void finish(){
-        synchronized (mPauseLock) {
-            mFinished = true;
-        }
+    public boolean isPaused(){
+        return paused;
     }
 
 }

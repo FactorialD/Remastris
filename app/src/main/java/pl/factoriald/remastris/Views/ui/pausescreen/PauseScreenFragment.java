@@ -15,12 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import lombok.Getter;
+import pl.factoriald.remastris.Entity.Setting;
+import pl.factoriald.remastris.Entity.Ticker;
 import pl.factoriald.remastris.Menu;
 import pl.factoriald.remastris.R;
+import pl.factoriald.remastris.Views.ui.playscreen.PlayScreenViewModel;
 
 public class PauseScreenFragment extends Fragment {
 
-    private PauseScreenViewModel mViewModel;
+    @Getter
+    private PlayScreenViewModel mViewModel;
 
     private Button continueGameButton;
     private Button settingsButton;
@@ -40,7 +45,8 @@ public class PauseScreenFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PauseScreenViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(PlayScreenViewModel.class);
+        //mViewModel = new ViewModelProvider(get, new ViewModelProvider.NewInstanceFactory()).get(PlayScreenViewModel.class);
         // TODO: Use the ViewModel
         initializeButtons(getActivity());
 
@@ -52,7 +58,9 @@ public class PauseScreenFragment extends Fragment {
 
         continueGameButton = a.findViewById(R.id.continue_play_button);
         continueGameButton.setOnClickListener((e) -> {
-            mViewModel.
+            Ticker ticker = Ticker.getInstanceUnchecked();
+            ticker.unpause();
+
             Menu.back(getActivity());
         });
 
@@ -67,5 +75,6 @@ public class PauseScreenFragment extends Fragment {
             Menu.openMainMenu(getActivity());
         });
     }
+
 
 }

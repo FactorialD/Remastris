@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -81,6 +82,7 @@ public class Menu {
     }
 
     public static void openClassicMode(FragmentActivity activity) {
+        Log.d("MENU", "Player choose CLASSIC");
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, PlayScreenFragment.newInstance(Gamemode.CLASSIC))
                 .addToBackStack("PlayScreenFragment")
@@ -88,6 +90,7 @@ public class Menu {
     }
 
     public static void openRandomMode(FragmentActivity activity) {
+        Log.d("MENU", "Player choose RANDOM");
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, PlayScreenFragment.newInstance(Gamemode.RANDOM))
                 .addToBackStack("PlayScreenFragment")
@@ -95,6 +98,7 @@ public class Menu {
     }
 
     public static void openCustomMode(FragmentActivity activity) {
+        Log.d("MENU", "Player choose CUSTOM");
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, PlayScreenFragment.newInstance(Gamemode.CUSTOM))
                 .addToBackStack("PlayScreenFragment")
