@@ -2,15 +2,11 @@ package pl.factoriald.remastris.Views.ui.playscreen;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.HashMap;
-import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
 import pl.factoriald.remastris.Entity.GameField;
 import pl.factoriald.remastris.Entity.Setting;
 import pl.factoriald.remastris.Entity.Ticker;

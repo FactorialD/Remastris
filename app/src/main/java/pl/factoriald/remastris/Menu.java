@@ -142,7 +142,4 @@ public class Menu {
 
     }
 
-    public static void openContinuePlay(FragmentActivity activity) {
-        //TODO pausing/continuing
-    }
 }

@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import lombok.Data;
 import pl.factoriald.remastris.Entity.Figures.Figure;
-import pl.factoriald.remastris.Entity.Figures.FigureGenerator;
 import pl.factoriald.remastris.Entity.Figures.UniversalFigure;
 
 import static java.lang.Boolean.parseBoolean;
@@ -127,7 +125,7 @@ public class GameField{
             if (gravityFilled()) {
                 endGame = true;
             }
-            findAndDeleteAllFixedLines();//TODO make it
+            findAndDeleteAllFixedLines();
         }
 
 
@@ -735,16 +733,7 @@ public class GameField{
 
     }
 
-    public void findAndDeleteAllFixedLines(){//TODO сделать описанное ниже
-        /*
-            Сначала проходим по всем графитациям и удаляем целые строки
-            потом используя алгоритм в моей толстой тетрадке
-            проходим по спирали по полю и перемещаем все зафиксированные клеточки в нужное направление  по ближайшей граывитации
-            аглоритм премещения:
-                считаем расстояния до краев поля(если есть ссответствующая гравитация) и куда ближе, туда и двигаем
-                для этого понадобится алгоритм определения какое число больше, опреденение дубликатов (уже есть)
-                приоритеты такие: низ - верх - лево - право
-         */
+    public void findAndDeleteAllFixedLines(){
 
         for(Map.Entry<Direction, Gravity> gravityEntry : gravities.entrySet()){
 

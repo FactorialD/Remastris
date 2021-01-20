@@ -1,7 +1,6 @@
 package pl.factoriald.remastris.Entity.Figures;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+
 import android.util.Log;
 
 import pl.factoriald.remastris.Entity.Cell;
@@ -9,27 +8,15 @@ import pl.factoriald.remastris.Entity.CellState;
 import pl.factoriald.remastris.Entity.Direction;
 import pl.factoriald.remastris.Entity.GameField;
 import pl.factoriald.remastris.Entity.Setting;
-import pl.factoriald.remastris.Entity.Utility;
 
-import static java.lang.Integer.parseInt;
 import static pl.factoriald.remastris.Entity.Figures.ElementType._1_1_DEFAULT;
 import static pl.factoriald.remastris.Entity.Figures.ElementType._2_2_CUBE;
 import static pl.factoriald.remastris.Entity.Figures.ElementType._2_2_LITTLE_R;
-import static pl.factoriald.remastris.Entity.Figures.ElementType._2_2_LITTLE_R_CCCW;
-import static pl.factoriald.remastris.Entity.Figures.ElementType._2_2_LITTLE_R_CCW;
-import static pl.factoriald.remastris.Entity.Figures.ElementType._2_2_LITTLE_R_CW;
+
 import static pl.factoriald.remastris.Entity.Figures.ElementType._3_3_LITTLE_T;
 import static pl.factoriald.remastris.Entity.Figures.ElementType._3_3_X;
 import static pl.factoriald.remastris.Entity.Figures.ElementType._4_4_I;
-import static pl.factoriald.remastris.Entity.Figures.Figure2_2.figure2_2_cube;
-import static pl.factoriald.remastris.Entity.Figures.Figure2_2.figure2_2_littleR;
-import static pl.factoriald.remastris.Entity.Figures.Figure2_2.figure2_2_littleR_CCCW;
-import static pl.factoriald.remastris.Entity.Figures.Figure2_2.figure2_2_littleR_CCW;
-import static pl.factoriald.remastris.Entity.Figures.Figure2_2.figure2_2_littleR_CW;
-import static pl.factoriald.remastris.Entity.Figures.Figure3_3.figure3_3_L;
-import static pl.factoriald.remastris.Entity.Figures.Figure3_3.figure3_3_L_CCCW;
-import static pl.factoriald.remastris.Entity.Figures.Figure3_3.figure3_3_L_CCW;
-import static pl.factoriald.remastris.Entity.Figures.Figure3_3.figure3_3_L_CW;
+
 
 public class UniversalFigure extends Figure {
     @Override
@@ -71,7 +58,7 @@ public class UniversalFigure extends Figure {
         String set = gf.getSettings().get(Setting.FIGURE_SET);
         int figureValue = 21;
         if(set.equals("FIGURE_ADVANCED")){
-            figureValue = 27;
+            figureValue = 30;
         }
         Log.d("RANDOM FIGURE", "set is : " + set);
         int r =(int) (Math.random() * (figureValue-1) % figureValue);
